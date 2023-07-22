@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.satyajit.myshop.di.component.ApplicationComponent
+import com.satyajit.myshop.ui.homescreen.HomeScreenRoute
 import com.satyajit.myshop.ui.splashscreen.SplashScreen
 
 @Composable
@@ -16,7 +17,10 @@ fun RootNavHost(navHostController: NavHostController, applicationComponent: Appl
         }
 
         composable(Graphs.HomeScreen.route) {
-
+            HomeScreenRoute(
+                navHostController = navHostController,
+                applicationComponent = applicationComponent
+            )
         }
     }
 
