@@ -1,4 +1,4 @@
-package com.satyajit.myshop
+package com.satyajit.myshop.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
