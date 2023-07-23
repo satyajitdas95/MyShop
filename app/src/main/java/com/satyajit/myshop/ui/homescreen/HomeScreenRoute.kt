@@ -1,16 +1,19 @@
 package com.satyajit.myshop.ui.homescreen
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.satyajit.myshop.di.component.ApplicationComponent
 
 @Composable
 fun HomeScreenRoute(onSearchClicked: () -> Unit, applicationComponent: ApplicationComponent) {
 
-    val homeViewModel: HomeViewModel =
+    val viewModel: HomeViewModel =
         viewModel(factory = applicationComponent.getHomeViewModelFactory())
 
-    HomeScreen(onSearchClicked = onSearchClicked)
+    val uiState = viewModel.uiState.collectAsState().value
+
+    val onRetryClicked = { viewModel.fetchAllProducts() }
+
+    HomeScreen(uiState, onRetryClicked = onRetryClicked, onSearchClicked = onSearchClicked)
 }

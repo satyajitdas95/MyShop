@@ -19,5 +19,7 @@
     <string name="label_shop_distance_value">1.82 Kms</string>
     <string name="label_shop_contact">Contact</string>
 
+    <string name="label_rupees_symbol">₹</string>
+
 </resources>
 
