@@ -4,4 +4,8 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.SOURCE)
-annotation class ApplciationContext
+annotation class ApplicationContext
+
+@Qualifier
+@Retention(AnnotationRetention.SOURCE)
+annotation class BaseUrl
