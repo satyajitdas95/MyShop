@@ -7,10 +7,10 @@ import androidx.navigation.NavHostController
 import com.satyajit.myshop.di.component.ApplicationComponent
 
 @Composable
-fun HomeScreenRoute(navHostController: NavHostController,applicationComponent: ApplicationComponent) {
+fun HomeScreenRoute(onSearchClicked: () -> Unit, applicationComponent: ApplicationComponent) {
 
     val homeViewModel: HomeViewModel =
         viewModel(factory = applicationComponent.getHomeViewModelFactory())
 
-    HomeScreen(homeViewModel = homeViewModel)
+    HomeScreen(onSearchClicked = onSearchClicked)
 }

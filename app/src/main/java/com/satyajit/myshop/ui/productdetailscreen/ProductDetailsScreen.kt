@@ -1,4 +1,9 @@
-package com.satyajit.myshop.ui.searchscreen
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3Api::class
+)
+
+package com.satyajit.myshop.ui.productdetailscreen
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -26,16 +31,11 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.satyajit.myshop.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchAppBar(
     placeholderText:String,
@@ -64,8 +64,7 @@ fun SearchAppBar(
                     modifier = Modifier
                         .alpha(ContentAlpha.disabled),
                     text = placeholderText,
-                    color = Color.Black,
-                    fontSize = 12.sp
+                    color = Color.Black
                 )
             },
             textStyle = TextStyle(
@@ -127,5 +126,5 @@ fun SearchAppBar(
 @Preview
 @Composable
 fun SearchPreview() {
-    SearchAppBar(stringResource(id = R.string.label_search_placeholder),"",{},{})
+    SearchAppBar("Search Something..","",{},{})
 }

@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">MyShop</string>
 
+    <!--Home Screen-->
+
+    <string name="label_search_placeholder">Search for product , branch ,or shops</string>
+
+    <!--Static shop data-->
+    <string name="label_shop_name">Dheeraj Provision Stores</string>
+    <string name="label_shop_category">Grocery</string>
+    <string name="label_shop_read_my_story">Read my story</string>
+    <string name="label_shop_store_timing">Store Timings</string>
+    <string name="label_shop_store_timing_value">9 AM - 10PM</string>
+    <string name="label_shop_delivery_timing">Delivery Time</string>
+    <string name="label_shop_delivery_timing_value">Today</string>
+    <string name="label_shop_minimum_order">Minimum Order</string>
+    <string name="label_shop_minimum_order_value">₹400</string>
+    <string name="label_shop_rating">4.2</string>
+    <string name="label_shop_distance_value">1.82 Kms</string>
+    <string name="label_shop_contact">Contact</string>
+
 </resources>
+

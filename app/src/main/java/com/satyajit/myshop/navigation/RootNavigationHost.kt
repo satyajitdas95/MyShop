@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.satyajit.myshop.di.component.ApplicationComponent
 import com.satyajit.myshop.ui.homescreen.HomeScreenRoute
+import com.satyajit.myshop.ui.productdetailscreen.ProductDetailsScreen
+import com.satyajit.myshop.ui.searchscreen.SearchScreenRoute
 import com.satyajit.myshop.ui.splashscreen.SplashScreen
 
 @Composable
@@ -18,9 +20,17 @@ fun RootNavHost(navHostController: NavHostController, applicationComponent: Appl
 
         composable(Graphs.HomeScreen.route) {
             HomeScreenRoute(
-                navHostController = navHostController,
+                onSearchClicked = {navHostController.navigate(Graphs.SearchScreen.route)},
                 applicationComponent = applicationComponent
             )
+        }
+
+        composable(Graphs.SearchScreen.route){
+            SearchScreenRoute(applicationComponent = applicationComponent)
+        }
+
+        composable(Graphs.ProductDetailScreen.route){
+            ProductDetailsScreen(applicationComponent = applicationComponent)
         }
     }
 
@@ -29,4 +39,6 @@ fun RootNavHost(navHostController: NavHostController, applicationComponent: Appl
 sealed class Graphs(val route: String) {
     object SplashScreen : Graphs("splash")
     object HomeScreen : Graphs("homescreen")
+    object SearchScreen : Graphs("searchScreen")
+    object ProductDetailScreen : Graphs("productDetailsScreen")
 }
