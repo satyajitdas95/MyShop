@@ -4,13 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class AllProductsResponse(
     @SerializedName("products" ) var products : ArrayList<Product> = arrayListOf(),
+    @SerializedName("category" ) var category : ArrayList<Product> = arrayListOf(),
     @SerializedName("total"    ) var total    : Int?                = null,
     @SerializedName("skip"     ) var skip     : Int?                = null,
     @SerializedName("limit"    ) var limit    : Int?                = null
 
 ) {
     data class Product(
-        @SerializedName("id"                 ) var id                 : Int?              = null,
+        @SerializedName("id"                 ) var id                 : Int              ,
         @SerializedName("title"              ) var title              : String?           = null,
         @SerializedName("description"        ) var description        : String?           = null,
         @SerializedName("price"              ) var price              : Int?              = null,

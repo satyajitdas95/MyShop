@@ -9,3 +9,8 @@ annotation class ApplicationContext
 @Qualifier
 @Retention(AnnotationRetention.SOURCE)
 annotation class BaseUrl
+
+@Qualifier
+@Retention(AnnotationRetention.SOURCE)
+annotation class DatabaseName
+

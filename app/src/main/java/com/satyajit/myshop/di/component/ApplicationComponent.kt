@@ -15,5 +15,6 @@ interface ApplicationComponent {
     fun inject(application:MyShopApp)
 
     fun getHomeViewModelFactory(): ViewModelProviderFactory<HomeViewModel>
+
     fun getSearchViewModelFactory(): ViewModelProviderFactory<SearchViewModel>
 }

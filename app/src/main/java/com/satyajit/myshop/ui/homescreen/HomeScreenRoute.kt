@@ -11,9 +11,10 @@ fun HomeScreenRoute(onSearchClicked: () -> Unit, applicationComponent: Applicati
     val viewModel: HomeViewModel =
         viewModel(factory = applicationComponent.getHomeViewModelFactory())
 
-    val uiState = viewModel.uiState.collectAsState().value
+    val uiStateProducts = viewModel.uiStateProducts.collectAsState().value
+    val uiStateCategory = viewModel.uiStateCategory.collectAsState().value
 
     val onRetryClicked = { viewModel.fetchAllProducts() }
 
-    HomeScreen(uiState, onRetryClicked = onRetryClicked, onSearchClicked = onSearchClicked)
+    HomeScreen(uiStateProducts = uiStateProducts, uiStateCategory = uiStateCategory, onRetryClicked = onRetryClicked, onSearchClicked = onSearchClicked)
 }

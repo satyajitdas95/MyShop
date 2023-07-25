@@ -1,17 +1,20 @@
 package com.satyajit.myshop.di.module
 
 import android.content.Context
+import androidx.room.Room
 import com.satyajit.myshop.MyShopApp
 import com.satyajit.myshop.data.api.NetworkService
+import com.satyajit.myshop.data.local.db.AppDatabase
 import com.satyajit.myshop.data.repository.HomeRepository
+import com.satyajit.myshop.data.repository.SearchRepository
 import com.satyajit.myshop.di.ApplicationContext
 import com.satyajit.myshop.di.BaseUrl
+import com.satyajit.myshop.di.DatabaseName
 import com.satyajit.myshop.ui.base.ViewModelProviderFactory
 import com.satyajit.myshop.ui.homescreen.HomeViewModel
 import com.satyajit.myshop.ui.searchscreen.SearchViewModel
 import dagger.Module
 import dagger.Provides
-import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,11 +23,11 @@ import javax.inject.Singleton
 
 
 @Module
-class ApplicationModule(private val application:MyShopApp) {
+class ApplicationModule(private val application: MyShopApp) {
 
     @ApplicationContext
     @Provides
-    fun provideContext() : Context{
+    fun provideContext(): Context {
         return application
     }
 
@@ -32,6 +35,9 @@ class ApplicationModule(private val application:MyShopApp) {
     @Provides
     fun provideBaseUrl(): String = "https://dummyjson.com/"
 
+    @DatabaseName
+    @Provides
+    fun provideDatabaseName(): String = "MyShop.db"
 
     @Provides
     @Singleton
@@ -56,16 +62,28 @@ class ApplicationModule(private val application:MyShopApp) {
     }
 
     @Provides
-    fun provideHomeViewModelFactory(homeScreenRepository: HomeRepository) : ViewModelProviderFactory<HomeViewModel>{
-        return ViewModelProviderFactory(HomeViewModel::class){
+    @Singleton
+    fun provideRoomDb(
+        @DatabaseName dbName: String
+    ): AppDatabase {
+        return Room.databaseBuilder(
+            application,
+            AppDatabase::class.java,
+            dbName
+        ).build()
+    }
+
+    @Provides
+    fun provideHomeViewModelFactory(homeScreenRepository: HomeRepository): ViewModelProviderFactory<HomeViewModel> {
+        return ViewModelProviderFactory(HomeViewModel::class) {
             HomeViewModel(homeScreenRepository)
         }
     }
 
     @Provides
-    fun provideSearchViewModelFactory() : ViewModelProviderFactory<SearchViewModel>{
-        return ViewModelProviderFactory(SearchViewModel::class){
-            SearchViewModel()
+    fun provideSearchViewModelFactory(searchRepository: SearchRepository): ViewModelProviderFactory<SearchViewModel> {
+        return ViewModelProviderFactory(SearchViewModel::class) {
+            SearchViewModel(searchRepository)
         }
     }
 

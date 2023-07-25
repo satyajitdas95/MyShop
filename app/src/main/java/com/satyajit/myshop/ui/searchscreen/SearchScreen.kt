@@ -37,8 +37,8 @@ import com.satyajit.myshop.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchAppBar(
-    placeholderText:String,
+fun SearchScreen(
+    placeholderText: String,
     text: String,
     onTextChange: (String) -> Unit,
     onSearchClicked: (String) -> Unit,
@@ -127,5 +127,5 @@ fun SearchAppBar(
 @Preview
 @Composable
 fun SearchPreview() {
-    SearchAppBar(stringResource(id = R.string.label_search_placeholder),"",{},{})
+    SearchScreen(stringResource(id = R.string.label_search_placeholder), "", {}, {})
 }
