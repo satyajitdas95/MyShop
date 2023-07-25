@@ -25,7 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.satyajit.myshop.R
 import com.satyajit.myshop.data.local.db.entity.Product
-import com.satyajit.myshop.data.model.AllProductsResponse
 import com.satyajit.myshop.ui.base.UiState
 import com.satyajit.myshop.ui.custom.showErrorMessageWithRetry
 import com.satyajit.myshop.ui.custom.showLoading
@@ -33,9 +32,9 @@ import com.satyajit.myshop.ui.custom.showLoading
 @Composable
 fun HomeScreen(
     uiStateProducts: UiState<List<Product>>,
-    uiStateCategory: UiState<List<String>>,
     onRetryClicked: () -> Unit,
-    onSearchClicked: () -> Unit
+    onSearchClicked: () -> Unit,
+    onClickOfProduct: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -49,8 +48,11 @@ fun HomeScreen(
         ShopDetails()
 
         when (uiStateProducts) {
+
             is UiState.Loading -> {
-                showLoading()
+                if(uiStateProducts.isLoading){
+                    showLoading()
+                }
             }
 
             is UiState.Error -> {
@@ -73,17 +75,22 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
                     items(uiStateProducts.data) { product ->
-                        SingleProductItem(product = product)
+                        SingleProductItem(product = product, onClickOfProduct = onClickOfProduct)
                     }
                 }
             }
         }
 
         Spacer(
-            modifier = Modifier
-                .height(1000.dp)
-                .background(color = MaterialTheme.colorScheme.primary)
+            modifier = Modifier.height(16.dp)
         )
+
+        HomeScreenBottomBar()
+
+        Spacer(
+            modifier = Modifier.height(30.dp)
+        )
+
     }
 }
 
@@ -93,7 +100,6 @@ fun HomeScreen(
 fun PreviewHomeScreen() {
     Surface {
         val uilist = UiState.Success<List<Product>>(emptyList())
-        val uilistCategory = UiState.Success<List<String>>(emptyList())
-        HomeScreen(uilist, uilistCategory, {}, {})
+        HomeScreen(uilist, {}, {}, onClickOfProduct={})
     }
 }

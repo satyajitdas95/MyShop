@@ -7,15 +7,16 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
-class SearchRepository @Inject constructor(
-    private val networkService: NetworkService,
-    private val databaseService: AppDatabase
+class ProductDetailsRepository @Inject constructor(
+    private val networkService: NetworkService, private val databaseService: AppDatabase
 ) {
-
-    fun getAllProducts(query: String): Flow<List<Product>> {
-        return databaseService.productDao().getAllProductByName(query)
+    fun getProductByID(productID: Int): Flow<Product> {
+        return databaseService.productDao().getProductByID(productID)
     }
 
 }
+
+
+
+

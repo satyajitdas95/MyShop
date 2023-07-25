@@ -2,6 +2,7 @@ package com.satyajit.myshop.ui.homescreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -16,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -28,11 +28,10 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.satyajit.myshop.R
 import com.satyajit.myshop.data.local.db.entity.Product
-import com.satyajit.myshop.data.model.AllProductsResponse
 
 
 @Composable
-fun SingleProductItem(product: Product) {
+fun SingleProductItem(product: Product, onClickOfProduct: (String) -> Unit) {
     Column(
         modifier = Modifier
             .width(120.dp)
@@ -43,6 +42,7 @@ fun SingleProductItem(product: Product) {
                 shape = RoundedCornerShape(6.dp)
             )
             .background(color = MaterialTheme.colorScheme.background)
+            .clickable { onClickOfProduct.invoke(product.id.toString()) }
     ) {
         Column(
             modifier = Modifier

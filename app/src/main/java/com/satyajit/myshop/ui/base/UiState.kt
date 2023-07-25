@@ -6,6 +6,7 @@ sealed interface UiState<out T> {
 
     data class Error(val message: String) : UiState<Nothing>
 
-    object Loading : UiState<Nothing>
+    data class Loading(val isLoading: Boolean) : UiState<Nothing>
+
 
 }

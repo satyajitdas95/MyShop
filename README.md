@@ -95,7 +95,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 ```
 MIT License
 
-Copyright (c) 2021 Satyajit Das
+Copyright (c) 2023 Satyajit Das
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -26,10 +26,13 @@ interface ProductDao {
     @Update
     fun update(product: Product)
 
-    @Query("SELECT * FROM product WHERE title LIKE :title")
-    fun getAllProductByName(title: String): List<Product>
+    @Query("SELECT * FROM product WHERE title LIKE '%' || :query || '%'")
+    fun getAllProductByName(query: String): Flow<List<Product>>
 
     @Query("SELECT * FROM product")
     fun getAllProducts(): Flow<List<Product>>
+
+    @Query("SELECT * FROM product where id = :productId")
+    fun getProductByID(productId:Int): Flow<Product>
 
 }

@@ -1,10 +1,8 @@
 package com.satyajit.myshop.ui.searchscreen
 
-import android.provider.Telephony.Threads
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.satyajit.myshop.data.model.AllProductsResponse
-import com.satyajit.myshop.data.repository.HomeRepository
+import com.satyajit.myshop.data.local.db.entity.Product
 import com.satyajit.myshop.data.repository.SearchRepository
 import com.satyajit.myshop.ui.base.UiState
 import kotlinx.coroutines.Dispatchers
@@ -24,10 +22,9 @@ import kotlinx.coroutines.launch
 class SearchViewModel(private val searchRepository: SearchRepository) : ViewModel() {
 
     private val _uiState =
-        MutableStateFlow<UiState<List<AllProductsResponse.Product>>>(UiState.Loading)
+        MutableStateFlow<UiState<List<Product>>>(UiState.Loading(false))
 
-    val uiState: StateFlow<UiState<List<AllProductsResponse.Product>>> = _uiState.asStateFlow()
-
+    val uiState: StateFlow<UiState<List<Product>>> = _uiState.asStateFlow()
 
     fun search(query: StateFlow<String>) {
         viewModelScope.launch {
@@ -35,15 +32,12 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
                 .filter { query ->
                     return@filter query.isNotEmpty()
                 }
-//                .flowOn(Dispatchers.Main)
-//                .map {
-////                    Thread.currentThread().name
-//                }
                 .flowOn(Dispatchers.Default)
                 .distinctUntilChanged()
-                .flatMapLatest {
-                    searchRepository.getAllProducts()
-                        .catch {
+                .flatMapLatest { query ->
+                    _uiState.value = UiState.Loading(true)
+                    searchRepository.getAllProducts(query)
+                        .catch { e ->
                             emitAll(flowOf(emptyList()))
                         }
                 }
@@ -52,6 +46,10 @@ class SearchViewModel(private val searchRepository: SearchRepository) : ViewMode
                     _uiState.value = UiState.Success(result)
                 }
         }
+    }
+
+    fun updateText(text: String) {
+        _uiState.value = UiState.Loading(false)
     }
 
 

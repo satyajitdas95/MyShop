@@ -21,6 +21,13 @@
 
     <string name="label_rupees_symbol">₹</string>
     <string name="label_all_products">All Products</string>
+    <string name="error_no_result_found">Try again with something else</string>
+
+    <!--Static shop address data-->
+
+    <string name="label_shop_details">Shop Details</string>
+    <string name="label_shop_details_location">Shop No 4, Andheri Mall, Gol Garden, East Mumbai</string>
+    <string name="label_shop_details_payment">Cash on Delivery,Online Payment , Credit Card</string>
 
 </resources>
 
