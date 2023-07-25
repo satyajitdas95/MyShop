@@ -1,6 +1,4 @@
-## NewsX - Sample News App Android
-
-##Kotlin version coming soon.
+## MyShop - Sample E-commerce App
 
 [//]: # (<p align="center">)
 
