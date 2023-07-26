@@ -1,31 +1,33 @@
+
 ## MyShop - Sample E-commerce App
 
-[//]: # (<p align="center">)
-
-[//]: # (  <img src="https://dassatya1995.github.io/NewsX-1.jpeg" height="500" width="250">)
-
-[//]: # (  <img src="https://dassatya1995.github.io/NewsX-2.jpeg" height="500" width="250">)
-
-[//]: # (  <img src="https://dassatya1995.github.io/NewsX-3.gif" height="500" width="250">)
-
-[//]: # (</p>)
-
-[//]: # (<br>)
-
-[//]: # (***You can Install and test latest app from below 👇***)
-
-[//]: # ()
-[//]: # ([![NewsX App]&#40;https://img.shields.io/badge/NewsX-Apk-blue?style=for-the-badge&logo=android&#41;]&#40;https://github.com/dassatya1995/NewsX/releases/download/NewsX/NewsX.apk&#41;)
-
 ## About
-A Simple E-Commerce app demow ith local db and search feature. 
+A Simple E-Commerce app demo with local db and search feature. 
+
+
+<p align="center">
+<img src="https://github.com/satyajitdas95/MyShop/assets/24476245/5322bd85-4f7b-47e1-b7cb-fbb3a3331cd5).jpeg" height="500" width="250">
+<img src="https://github.com/satyajitdas95/MyShop/assets/24476245/f169d3d0-4f16-4729-b30a-282109e509a0).jpeg" height="500" width="250">
+<img src="https://github.com/satyajitdas95/MyShop/assets/24476245/28315cc1-9916-4218-8946-615d77c142d0).jpeg" height="500" width="250">
+<img src="https://github.com/satyajitdas95/MyShop/assets/24476245/24351ade-c0e3-4d46-afa1-6e0f116e13af).jpeg" height="500" width="250">
+<img src="https://github.com/satyajitdas95/MyShop/assets/24476245/2f4f2f80-67ff-4497-a8aa-ad9aa97a3e4d).jpeg" height="500" width="250">
+<img src="https://github.com/satyajitdas95/MyShop/assets/24476245/2f4f2f80-67ff-4497-a8aa-ad9aa97a3e4d).jpeg" height="500" width="250">
+</p>
+
+
+
+***You can Install and test the latest app from below 👇***
+
+[![MyShop.apk](https://img.shields.io/badge/MyShop-Apk-blue?style=for-the-badge&logo=android)](https://github.com/dassatya1995/MyShop/Releases/MyShop.apk)
+
+
 
 - MVVM architecture
 - Clean and Simple Material UI.
 - [Dummyjson.com](https://dummyjson.com/) API is used in this app.
 
 ## Built With 🛠
-- [Kotlin](https://kotlinlang.org/) - Programming language for Android development.
+- [Kotlin](https://kotlinlang.org/) - A programming language for Android development.
 - [Jetpack Compose](https://developer.android.com/jetpack/compose) - For Ui Components
 - [Coroutine](https://developer.android.com/kotlin/coroutines) - For asynchronous and more..
 - [Flow](https://developer.android.com/kotlin/flow) - For stream data that asynchronously
@@ -40,21 +42,25 @@ A Simple E-Commerce app demow ith local db and search feature.
 - [Gson](https://github.com/google/gson) - A modern JSON library for Kotlin and Java.
 - [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
+- [Lottie Animation]([https://github.com/material-components/material-components-android](https://lottiefiles.com/)) - Cool Animations in an Android App.
+
 
 
 # Package Structure
 
-    com.newsorg.newsapp.android    # Root Package
+    com.satyajit.myshop    # Root Package
     .
     ├── data                # For data handling.
     │   ├── local           # Local Persistence Database. Room  and shared perf
-    |   │   ├── dao         # Data Access Object for Room   
-    |   |   └── perf        # Shared preferences
+    |   │   └──dao            # Data Access Object for Room   
+    |   |   
     │   ├── remote          # Remote Data Handlers     
     │   ├── model           # Model classes
     |   │   ├── api         # Model classes for Api
     |   |   └── db          # Model classes for Db
     │   └── repository      # Single source of data.
+    |
+    ├── navigation          # PArent Navhost for navigation  
     |
     ├── di                  # Dependency Injection  
     │   ├── module          # DI Modules
@@ -63,10 +69,13 @@ A Simple E-Commerce app demow ith local db and search feature.
     |
     ├── ui                  # Activity/View layer
     │   ├── base            # Base View
-    │   ├── article_feed          # Main Screen Activity & ViewModel
-    |   │   ├── adapter     # Adapter for RecyclerView
-    |   │   └── viewmodel   # ViewHolder for RecyclerView   
-    │   └── article_details       # Detail Screen Activity and ViewModel
+    │   ├── custom          # Custom Views
+    │   ├── home screen     # Homescreen components and ViewModel
+    │   ├── productdetails  # Product details and ViewModel
+    │   ├── searchscreen    # Searchscreen and ViewModel
+    │   ├── splashscreen    # Splashscreen 
+    │   └──  theme           # App themeing details
+    │   
     |
     └── utils               # Utility Classes 
 
@@ -84,7 +93,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 - AndroidX
 
 #### Setup Project
-1. Open Android studio and select Get from Version Control.
+1. Open Android Studio and select Get from Version Control.
 2. Add URL as **https://github.com/satyajitdas95/MyShop** and proceed.
 3. Sync The project and you are done.
 
