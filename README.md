@@ -18,8 +18,7 @@ A Simple E-Commerce app demo with local db and search feature.
 
 ***You can Install and test the latest app from below 👇***
 
-[![MyShop.apk](https://img.shields.io/badge/MyShop-Apk-blue?style=for-the-badge&logo=android)](https://github.com/dassatya1995/MyShop/releases/download/myshop_v1/MyShop.apk)
-
+[![MyShop.apk](https://img.shields.io/badge/MyShop-Apk-blue?style=for-the-badge&logo=android)](https://github.com/satyajitdas95/MyShop/releases/download/myshop_v1/MyShop.apk)
 
 
 - MVVM architecture
